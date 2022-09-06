@@ -1,6 +1,8 @@
 """
 Package untuk mengolah data sondir berdasarkan Robertson 2009
 Baik single point, maupun multi point test.
+
+@author: agus daud
 """
 import os
 import pandas as pd
