@@ -44,6 +44,8 @@ Untuk menggunakan module ini direkomendasikan menggunakan **Jupyter Notebook/ Ju
 ## Contoh
 Berikut contoh perintah minimum untuk menggunakan module ISondir
 ```
+import ISondir
+
 s1 = ISondir.Single(id_='CPT-01')
 
 s1.read_excel('raw_data.xlsx')
