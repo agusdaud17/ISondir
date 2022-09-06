@@ -85,3 +85,9 @@ s1.estimation_plot3()
 ![Estimation plot 1](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjEtoxetmbtp_C7C_I13QzqoLlAw6Fi_iqX90vwP5gVTDKwzD8SgLXgX6UUBC2XCWQENlHNKZZVJ3jkXdEoQox6w1Ui5DnXUcQ3odmFvoNWt9V24Ynpt4QRh8rlLovJ8ZE2Cl0uxLxHdgzEzLWk6VtNIKCrjRSJKTy_gErERbK5xLehZjFkSFv4mPDYMQ/w400-h351/est_1.png)
 
 ![SBTN](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhJjC5TecusMoTmHnfZMG57spvoQ-Gv8OjzgAUAtSipxGu1jx5A-lf2P-2-LxWlo5ClDu0yjeRbutSpGFmqbkshO6VywjP5mx5k0G0d1h_dvLStl8m-QC_5LtK_pdKacccjMK1nx6_ce-gi_za6zMM-pe3InQTCK3UClsL3EyKSKQ0FPeeT9UYkSUytgg/w400-h363/plot_norm.png)
+
+## Export ke CSV
+
+```
+s1.export_csv(name='nama_file',folder='data_csv',existing_folder=False)
+```
