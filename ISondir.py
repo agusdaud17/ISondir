@@ -17,8 +17,6 @@ from PIL import Image
 import seaborn as sns
 import matplotlib.patches as mpatches
 
-import pondasi
-
 im = np.array(Image.open('SBTlow.jpg'))
 x_logref = np.linspace(-1,1,1649)
 x_grid = np.arange(0,1649,1)
@@ -802,54 +800,6 @@ class Single:
 
         self.df['IG'] = small_strain_rigidity
         self.df['KG'] = normalized_small_strain_rigidity
-
-    def solve_settlement(self,foundation='circular',q=0,B=0,Df=0):
-        list_pz = []
-        # list_strain = []
-        list_settlement = []
-        for i, z in enumerate(self.df['z']):
-            if i == 0:
-                strain_e = 0
-                pz = 0
-                Sz = 0
-            else:
-                if z > B or z < Df:
-                    strain_e = 0
-                    pz = 0
-                    Sz = 0
-                else:
-                    if foundation == 'circular':
-                        pz = pondasi.Stresses.circular(z,B,q)
-                    else:
-                        pz = pondasi.Stresses.rect(z,B,B,q)
-                    pr = 100 # kPa
-                    svo_ef = self.df.loc[i,'svo_ef']
-                    m = self.df.loc[i,'m']
-                    j = self.df.loc[i,'j']
-                    dz = 0.2 # m; only for sondir
-                    p1 = pz + svo_ef
-                    M = m*j
-                    P0 = (svo_ef/pr)**j
-                    P1 = (p1/pr)**j
-                    strain_e = (1/M)*(P1-P0)
-                    Sz = strain_e*dz
-
-            # list_strain.append(strain_e)
-            list_pz.append(pz)
-            list_settlement.append(Sz*1000)
-
-        # self.df['strain'] = list_strain
-        self.df['pz'] = list_pz
-        self.df['Sz'] = list_settlement
-
-        cumulative_Sz = []
-        for i, z in enumerate(self.df['z']):
-            if z < Df or z > B:
-                Sz_cum = 0
-            else:
-                Sz_cum = sum(self.df.loc[i:,'Sz'])
-            cumulative_Sz.append(Sz_cum)
-        self.df['Sz_tot'] = cumulative_Sz
 
     def qa_CPT(self,B=1,L=0,Df=1):
         if L == 0:
